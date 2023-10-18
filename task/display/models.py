@@ -1,5 +1,12 @@
-from django.contrib.auth.models import Group
 from django.db import models
 
 
-Group.add_to_class('group_description', models.TextField(max_length=250, null=True, blank=True))
+class User(models.Model):
+    username = models.CharField(max_length=100)
+    date_joined = models.DateTimeField(auto_now_add=True)
+    group = models.ForeignKey('Group', on_delete=models.CASCADE)
+
+
+class Group(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()

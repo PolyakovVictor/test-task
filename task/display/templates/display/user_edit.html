@@ -2,34 +2,27 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2>Add User</h2>
+    <h2>Edit User</h2>
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
             <div class="card" style="border-radius: 15px;">
                 <div class="card-body-auth card-body p-5">
                     <form method="post">
                         {% csrf_token %}
-
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
+                            <input type="text" class="form-control" name="username" placeholder="Username" value="{{ user.username }}">
                         </div>
-
                         <div class="mb-3">
-                            <label for="group" class="form-label">Group</label>
                             <select class="form-select" id="group" name="group" required>
                                 <option value="" disabled selected>Select a group</option>
                                 {% for group in groups %}
-                                    <option value="{{ group.id }}">{{ group.name }}</option>
+                                    <option value="{{ group.name }}" {% if group.name == user.group.name %}selected{% endif %}>
+                                        {{ group.name }}
+                                    </option>
                                 {% endfor %}
                             </select>
                         </div>
-
-                        {% if errors %}
-                            <h4>{{ errors }}</h4>
-                        {% endif %}
-
-                        <button type="submit" class="btn btn-primary">Add User</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
             </div>
