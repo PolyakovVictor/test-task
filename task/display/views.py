@@ -16,7 +16,8 @@ def add_user_views(request):
     group = Group.objects.first()
 
     if group is None:
-        return render(request, 'display/add_group.html', {'errors': 'First you have to create a group'})
+        context['errors'] = 'First you have to create a group'
+        return render(request, 'display/add_user.html', context)
 
     if request.method == 'POST':
 
