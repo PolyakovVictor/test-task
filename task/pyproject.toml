@@ -1,16 +1,15 @@
 [tool.poetry]
-name = "test-task"
+name = "poetry-task"
 version = "0.1.0"
 description = ""
-authors = ["Victor Polyakov <polyakov.victor21@gmail.com>"]
+authors = ["Victor <polyakov.victor21@gmail.com>"]
 readme = "README.md"
-packages = [{include = "test_task"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 django = "^4.2.6"
 python-decouple = "^3.8"
-psycopg2 = "^2.9.9"
+psycopg2-binary = "^2.9.9"
 
 
 [build-system]
